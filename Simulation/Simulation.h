@@ -1,5 +1,5 @@
 #pragma once
-// Simulation.cpp
+// Simulation.h
 
 #include <iostream>
 #include <string>
@@ -8,15 +8,15 @@
 
 class Simulation
 {
-	private:
 
-		Simulation()
-		{
-		}
+private:
 
-		~Simulation()
-		{
-		}
+
+public:
+
+	Simulation();
+	~Simulation();
+
 
 
 };
