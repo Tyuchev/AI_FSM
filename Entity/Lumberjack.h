@@ -3,16 +3,18 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 
 #include "Entity.h"
 #include "../State/State.h"
+#include "../StateManager/StateManager.h"
 
 
 class Lumberjack : public Entity
 {
 private:
 
-	State* m_currentState;
+	std::unique_ptr<StateManager<Lumberjack>> m_StateManager;
 	//Location location
 
 	int m_Happiness;
@@ -22,8 +24,8 @@ private:
 	int m_Thirst;
 	int m_Tired;
 
-	int m_maxLogs;
-	int m_currentLogs;
+	int m_MaxWood;
+	int m_CurrentWood;
 
 
 
@@ -33,7 +35,7 @@ public:
 	~Lumberjack();
 
 	void update();
-	void updateState(State* inputState);
+	void updateState(State<Lumberjack>* inputState);
 
 	void addLogToInventory();
 	bool tractorFull();
@@ -42,5 +44,21 @@ public:
 	bool tired();
 	bool bored();
 
+	void updateHappiness(int happinessChange);
+	void updateCash(int cashChange);
+	void updateDeposits(int depositsChange);
+	void updateHunger(int hungerChange);
+	void updateThirst(int thirstChange);
+	void updateTiredness(int tirednessChange);
+
+	int getHappiness();
+	int getCash();
+	int getDeposits();
+	int getHunger();
+	int getThirst();
+	int getTiredness();
+
+	int getCurrentWood();
+	int getMaxWood();
 
 };

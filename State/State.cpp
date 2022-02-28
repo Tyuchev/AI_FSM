@@ -10,6 +10,6 @@
 
 
 
-State::~State()
+State<Lumberjack>::~State()
 {
 }

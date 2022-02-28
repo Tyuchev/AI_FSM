@@ -8,7 +8,7 @@
 #include "State.h"
 
 
-class Resting : public State
+class Resting : public State<Lumberjack>
 {
 
 private:

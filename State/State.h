@@ -7,6 +7,7 @@
 #include "../Entity/Lumberjack.h"
 
 
+template <class entityType>
 class State
 {
 
@@ -20,8 +21,8 @@ public:
 
 	virtual ~State();
 
-	virtual void Enter(Lumberjack* lumberjack) = 0;
-	virtual void Execute(Lumberjack* lumberjack) = 0;
-	virtual void Exit(Lumberjack* lumberjack) = 0;
+	virtual void Enter(entityType* lumberjack) = 0;
+	virtual void Execute(entityType* lumberjack) = 0;
+	virtual void Exit(entityType* lumberjack) = 0;
 
 };

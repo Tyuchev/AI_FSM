@@ -8,7 +8,7 @@
 #include "State.h"
 
 
-class Dancing : public State
+class Dancing : public State<Lumberjack>
 {
 
 private:

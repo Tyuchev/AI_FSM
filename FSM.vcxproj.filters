@@ -51,6 +51,9 @@
     <ClCompile Include="State\Logging.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State\LumberjackGlobalState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -81,6 +84,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State\Resting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager\StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State\LumberjackGlobalState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 
 #include "Logging.h"
 #include "../Entity/Lumberjack.h"
+#include "State.h"
 
 
 
@@ -37,36 +38,11 @@ void Logging::Execute(Lumberjack* lumberjack)
 {
 	lumberjack->addLogToInventory();
 	std::cout << "Found a good tree to sell!" << std::endl;
-
-	if (lumberjack->thirsty())
-	{
-		std::cout << "I'm thirsty, off to the pub!" << std::endl;
-		//change lumberjack state to drinking and location to pub
-	}
-	else if (lumberjack->hungry())
-	{
-		std::cout << "I'm hungry, I'm going to the restaurant" << std::endl;
-		//change lumberjack state to eating at restaurant location
-	}
-	else if (lumberjack->tired())
-	{
-		std::cout << "I'm sleepy, I'm gonna get some rest" << std::endl;
-		//change lumberjack state to resting - location home or market
-	}
-	else if (lumberjack->bored())
-	{
-		std::cout << "This is boring, time to bust a move!" << std::endl;
-		//change lumberjack state to dancing and location to night club
-	}
-	else if (lumberjack->tractorFull())
-	{
-		std::cout << "Tractor's full, better head back to market" << std::endl;
-		//change lumberjack state to return to market
-	}
-
 }
 
 void Logging::Exit(Lumberjack* lumberjack)
 {
 	std::cout << "Entity " << lumberjack->getID() << " heading back to town" << std::endl;
+
+	// Move back to market place
 }
