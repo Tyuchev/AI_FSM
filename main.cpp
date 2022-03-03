@@ -23,5 +23,9 @@ int main()
 
 	// Create a moving state? take start and end locations?
 
+	// INIT and create all entities priot to use
+
+	// INIT and draw map - Create links between nodes
+
 	return 0;
 }

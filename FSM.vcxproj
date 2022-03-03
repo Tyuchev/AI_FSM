@@ -142,6 +142,7 @@
     <ClCompile Include="Entity\Entity.cpp" />
     <ClCompile Include="Entity\Lumberjack.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Simulation\Location.cpp" />
     <ClCompile Include="Simulation\Simulation.cpp" />
     <ClCompile Include="State\Banking.cpp" />
     <ClCompile Include="State\Dancing.cpp" />
@@ -150,11 +151,13 @@
     <ClCompile Include="State\Logging.cpp" />
     <ClCompile Include="State\LumberjackGlobalState.cpp" />
     <ClCompile Include="State\Resting.cpp" />
+    <ClCompile Include="State\Selling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity\Entity.h" />
     <ClInclude Include="Entity\Lumberjack.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Simulation\Location.h" />
     <ClInclude Include="Simulation\Simulation.h" />
     <ClInclude Include="StateManager\StateManager.h" />
     <ClInclude Include="State\Banking.h" />
@@ -164,7 +167,11 @@
     <ClInclude Include="State\Logging.h" />
     <ClInclude Include="State\LumberjackGlobalState.h" />
     <ClInclude Include="State\Resting.h" />
+    <ClInclude Include="State\Selling.h" />
     <ClInclude Include="State\State.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ReadMe\townLayout.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

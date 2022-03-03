@@ -9,36 +9,20 @@
 
 #include "Lumberjack.h"
 #include "Entity.h"
-#include "../State/State.h"
 #include "../StateManager/StateManager.h"
 
-//Possible Lumberjack states
-#include "../State/Banking.h"
-#include "../State/Dancing.h"
-#include "../State/Drinking.h"
-#include "../State/Eating.h"
-#include "../State/Logging.h"
-#include "../State/Resting.h"
-#include "../State/LumberjackGlobalState.h"
 
 
 Lumberjack::Lumberjack()
 	:m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
-	m_Unhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false), m_WalletFull(false)
+	m_IsUnhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false)
 {
 	m_StateManager = std::make_unique<StateManager<Lumberjack>>(this);
-	m_StateManager->setCurState(Resting::Instance());
-	m_StateManager->setGloState(LumberjackGlobalState::Instance());
-	m_StateManager->setPreState(nullptr);
 
 	Entity::setID(nextID);
 	nextID++;
 }
 
-Lumberjack::~Lumberjack()
-{
-
-}
 
 void Lumberjack::update()
 {
@@ -83,6 +67,10 @@ void Lumberjack::updateState(State<Lumberjack>* inputState)
 void Lumberjack::addLogToInventory()
 {
 	m_CurrentWood++;
+}
+void Lumberjack::removeLogInventory()
+{
+	m_CurrentWood--;
 }
 
 void Lumberjack::updateHappiness(int happinessChange)

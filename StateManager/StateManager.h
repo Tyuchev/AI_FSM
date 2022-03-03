@@ -7,6 +7,8 @@
 #include <string>
 
 #include "../State/State.h"
+#include "../State/LumberjackGlobalState.h"
+#include "../State/Resting.h"
 
 
 template <class entityType>
@@ -25,7 +27,7 @@ public:
 
 	StateManager() = delete;
 	StateManager(entityType* owner)
-		:m_Owner(owner), m_CurrentState(0), m_PreviousState(0), m_GlobalState(0)
+		:m_Owner(owner), m_CurrentState(nullptr), m_PreviousState(nullptr), m_GlobalState(nullptr)
 	{
 	}
 
@@ -57,6 +59,14 @@ public:
 	void setGloState(State<entityType>* inputState)
 	{
 		m_GlobalState = inputState;
+	}
+
+	//Important to call for all entities who use a statemanager prior to use
+	void initLumberjack()
+	{
+		setCurState(Resting::Instance());
+		setGloState(LumberjackGlobalState::Instance());
+		setPreState(nullptr);
 	}
 
 	void Update()

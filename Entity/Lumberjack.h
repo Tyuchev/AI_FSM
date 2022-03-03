@@ -7,17 +7,9 @@
 #include <stdio.h>
 
 #include "Entity.h"
-#include "../State/State.h"
 #include "../StateManager/StateManager.h"
 
-//Possible Lumberjack states
-#include "../State/Banking.h"
-#include "../State/Dancing.h"
-#include "../State/Drinking.h"
-#include "../State/Eating.h"
-#include "../State/Logging.h"
-#include "../State/Resting.h"
-#include "../State/LumberjackGlobalState.h"
+
 
 class Lumberjack : public Entity
 {
@@ -41,10 +33,8 @@ private:
 public:
 
 	Lumberjack();
-	~Lumberjack();
 
-	bool m_Unhappy;
-	bool m_WalletFull;
+	bool m_IsUnhappy;
 	bool m_IsHungry;
 	bool m_IsThirsty;
 	bool m_IsTired;
@@ -53,6 +43,7 @@ public:
 	void updateState(State<Lumberjack>* inputState);
 
 	void addLogToInventory();
+	void removeLogInventory();
 	bool tractorFull();
 	bool thirsty();
 	bool hungry();
