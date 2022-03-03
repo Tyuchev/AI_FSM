@@ -12,12 +12,13 @@ class Drinking : public State<Lumberjack>
 {
 
 private:
-	Drinking();
-	Drinking(const Drinking&);
+
+	Drinking() {};
+	Drinking(const Drinking&) {};
 
 public:
 
-	virtual ~Drinking();
+	virtual ~Drinking() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

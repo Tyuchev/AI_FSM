@@ -4,11 +4,20 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <stdio.h>
 
 #include "Entity.h"
 #include "../State/State.h"
 #include "../StateManager/StateManager.h"
 
+//Possible Lumberjack states
+#include "../State/Banking.h"
+#include "../State/Dancing.h"
+#include "../State/Drinking.h"
+#include "../State/Eating.h"
+#include "../State/Logging.h"
+#include "../State/Resting.h"
+#include "../State/LumberjackGlobalState.h"
 
 class Lumberjack : public Entity
 {
@@ -34,6 +43,12 @@ public:
 	Lumberjack();
 	~Lumberjack();
 
+	bool m_Unhappy;
+	bool m_WalletFull;
+	bool m_IsHungry;
+	bool m_IsThirsty;
+	bool m_IsTired;
+
 	void update();
 	void updateState(State<Lumberjack>* inputState);
 
@@ -50,6 +65,8 @@ public:
 	void updateHunger(int hungerChange);
 	void updateThirst(int thirstChange);
 	void updateTiredness(int tirednessChange);
+
+	void depositEarnings();
 
 	int getHappiness();
 	int getCash();

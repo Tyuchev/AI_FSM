@@ -12,12 +12,12 @@ class Resting : public State<Lumberjack>
 {
 
 private:
-	Resting();
+	Resting() {};
 	Resting(const Resting&);
 
 public:
 
-	~Resting();
+	~Resting() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

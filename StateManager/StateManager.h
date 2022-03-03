@@ -3,7 +3,10 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <assert.h>
 #include <string>
+
+#include "../State/State.h"
 
 
 template <class entityType>
@@ -60,7 +63,7 @@ public:
 	{
 		if (m_GlobalState != nullptr)
 		{
-			m_GlobalState->Execute(m_Owner)
+			m_GlobalState->Execute(m_Owner);
 		}
 
 		if (m_CurrentState != nullptr)

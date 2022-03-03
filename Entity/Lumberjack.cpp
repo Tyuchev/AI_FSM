@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Lumberjack.h"
 #include "Entity.h"
@@ -21,7 +23,8 @@
 
 
 Lumberjack::Lumberjack()
-	:m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100)
+	:m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
+	m_Unhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false), m_WalletFull(false)
 {
 	m_StateManager = std::make_unique<StateManager<Lumberjack>>(this);
 	m_StateManager->setCurState(Resting::Instance());
@@ -67,6 +70,11 @@ int Lumberjack::getTiredness()
 	return m_Tired;
 }
 
+int Lumberjack::getHappiness()
+{
+	return m_Happiness;
+}
+
 void Lumberjack::updateState(State<Lumberjack>* inputState)
 {
 	m_StateManager->ChangeState(inputState);
@@ -74,7 +82,7 @@ void Lumberjack::updateState(State<Lumberjack>* inputState)
 
 void Lumberjack::addLogToInventory()
 {
-	m_currentLogs++;
+	m_CurrentWood++;
 }
 
 void Lumberjack::updateHappiness(int happinessChange)
@@ -105,15 +113,18 @@ void Lumberjack::updateTiredness(int tirednessChange)
 	m_Tired += tirednessChange;
 }
 
-int Lumberjack::getHappiness()
+void Lumberjack::depositEarnings()
 {
-	return m_Happiness;
-}
+	assert(m_Cash >= 3);
 
+	m_Deposits += (m_Cash - 3);
+	m_Cash = 3;
+
+}
 
 bool Lumberjack::tractorFull()
 {
-	if (m_currentLogs == m_maxLogs)
+	if (m_CurrentWood == m_MaxWood)
 	{
 		return true;
 	}

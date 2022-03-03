@@ -12,12 +12,12 @@ class Eating : public State<Lumberjack>
 {
 
 private:
-	Eating();
+	Eating() {};
 	Eating(const Eating&);
 
 public:
 
-	virtual ~Eating();
+	virtual ~Eating() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

@@ -13,13 +13,13 @@ class LumberjackGlobalState : public State<Lumberjack>
 
 private:
 
-	LumberjackGlobalState();
+	LumberjackGlobalState() {};
 	LumberjackGlobalState(const LumberjackGlobalState&);
 
 
 public:
 
-	virtual ~LumberjackGlobalState();
+	virtual ~LumberjackGlobalState() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

@@ -10,10 +10,6 @@
 
 
 
-Resting::~Resting()
-{
-}
-
 Resting* Resting::Instance()
 {
 	static Resting instance;

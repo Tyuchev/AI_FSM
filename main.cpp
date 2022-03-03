@@ -7,6 +7,7 @@
 #include "Simulation/Simulation.h"
 #include "Entity/Entity.h"
 #include "Entity/Lumberjack.h"
+#include "StateManager/StateManager.h"
 
 
 int main()
@@ -20,6 +21,7 @@ int main()
 	test.update();
 	test2.update();
 
+	// Create a moving state? take start and end locations?
 
 	return 0;
 }

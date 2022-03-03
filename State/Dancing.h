@@ -12,12 +12,12 @@ class Dancing : public State<Lumberjack>
 {
 
 private:
-	Dancing();
+	Dancing() {};
 	Dancing(const Dancing&);
 
 public:
 
-	virtual ~Dancing();
+	virtual ~Dancing() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

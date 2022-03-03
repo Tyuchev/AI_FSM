@@ -13,13 +13,13 @@ class Logging : public State<Lumberjack>
 
 private:
 
-	Logging();
+	Logging() {};
 	Logging(const Logging&);
 
 
 public:
 
-	virtual ~Logging();
+	virtual ~Logging() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

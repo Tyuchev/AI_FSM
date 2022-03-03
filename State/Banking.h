@@ -12,12 +12,12 @@ class Banking : public State<Lumberjack>
 {
 
 private:
-	Banking();
+	Banking() {};
 	Banking(const Banking&);
 
 public:
 
-	virtual ~Banking();
+	virtual ~Banking() {};
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

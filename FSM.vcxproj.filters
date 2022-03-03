@@ -27,19 +27,10 @@
     <ClCompile Include="Entity\Lumberjack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State\State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="State\Banking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State\Dancing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State\Drinking.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="State\Drinking.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State\Eating.cpp">
@@ -52,6 +43,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="State\LumberjackGlobalState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="State\Drinking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -90,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State\LumberjackGlobalState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State\Drinking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

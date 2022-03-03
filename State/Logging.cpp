@@ -10,10 +10,6 @@
 
 
 
-Logging::~Logging()
-{
-}
-
 Logging* Logging::Instance()
 {
 	static Logging instance;
