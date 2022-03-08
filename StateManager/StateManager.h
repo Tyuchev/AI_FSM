@@ -172,12 +172,16 @@ public:
 				std::cout << "Continuing to work in the forest" << std::endl;
 			}
 		}
-		else if (m_Entity->tractorFull())
+		else if (m_Entity->m_TractorFull)
 		{
 			if (!isInState(Selling::Instance()))
 			{
 				changeState(Selling::Instance());
 				std::cout << "Tractor's full, better head back to market" << std::endl;
+			}
+			else
+			{
+				std::cout << "Still selling my wares" << std::endl;
 			}
 		}
 		else if (m_Entity->getCash() >= 10)

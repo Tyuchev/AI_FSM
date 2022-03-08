@@ -26,6 +26,7 @@ void Dancing::Enter(Lumberjack* lumberjack)
 		// ticks++
 	}
 
+	lumberjack->updateCash(-1);
 	// Lumberjack->updateLocation(club)
 }
 

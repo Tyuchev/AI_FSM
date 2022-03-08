@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <chrono>
+#include <thread>
 
 
 #include "main.h"
@@ -16,36 +17,8 @@ int main()
 
 	std::cout << "Hello World" << std::endl;
 
-	Lumberjack bob;
-	Lumberjack fred;
-
-	StateManager<Lumberjack> bobManager{ &bob };
-	StateManager<Lumberjack> fredManager;
-	fredManager.addEntity(&fred);
-
-	auto start = std::chrono::high_resolution_clock::now();
-	auto turnEnd = std::chrono::high_resolution_clock::now();
-	auto elapsedTime = start - turnEnd;
-
-	while (true)
-	{
-		//Draw scene as often as poss
-		start = std::chrono::high_resolution_clock::now();
-		elapsedTime = start - turnEnd;
-
-		// if a 'turn' is 3 seconds, then update only values every 3 secs
-		if (elapsedTime.count() > 3)
-		{
-			fredManager.update();
-			bobManager.update();
-
-			printData(bobManager, fredManager);
-
-			turnEnd = std::chrono::high_resolution_clock::now();
-		}
-
-	}
-
+	// I think that my architecture could use some work - the Statemanager should probably be a parent class instead of template - 
+	// Then specific statemanager could be inherited from and more specific versions could be made for each type of entity - My states are reusable however
 
 
 	// Create a moving state? take start and end locations?
@@ -53,6 +26,62 @@ int main()
 	// create all entities prior to use
 
 	// INIT and draw map - Create links between nodes
+
+	// rework print data func to an entity method
+
+
+
+
+
+	Lumberjack bob;
+	Lumberjack fred;
+
+	StateManager<Lumberjack> bobManager{ &bob };
+	StateManager<Lumberjack> fredManager;
+	fredManager.addEntity(&fred);
+
+	auto start = std::chrono::steady_clock::now();
+	auto turnEnd = std::chrono::high_resolution_clock::now();
+	auto elapsedNano = turnEnd - start;
+	auto elapsedSeconds = std::chrono::duration_cast<std::chrono::duration<float>>(elapsedNano);
+
+	int turnLengthTime = 3;
+	float turnTimeBuffer = 0.0f;
+	int turnNum = 0;
+
+	while (true)
+	{
+		//Draw scene as often as poss
+		std::cout << "?" << std::endl;
+
+		start = std::chrono::high_resolution_clock::now();
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+		// if a 'turn' is 3 seconds, then update only values every 3 secs
+		if (turnTimeBuffer > turnLengthTime)
+		{
+
+			std::cout << "Turn " << turnNum << std::endl;
+			// if we are 'lagging behind'  we may have to update values several times per pass
+			for (int i = 0; i < (turnTimeBuffer / turnLengthTime); i++)
+			{
+				turnTimeBuffer -= 3.0f;
+
+				fredManager.update();
+				bobManager.update();
+
+				printData(bobManager, fredManager);
+				turnNum++;
+			}
+		}
+
+		turnEnd = std::chrono::high_resolution_clock::now();
+		elapsedNano = turnEnd - start;
+		elapsedSeconds = std::chrono::duration_cast<std::chrono::duration<float>>(elapsedNano);
+		turnTimeBuffer += elapsedSeconds.count();
+
+	}
+
+
 
 	return 0;
 }

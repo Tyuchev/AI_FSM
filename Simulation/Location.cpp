@@ -3,7 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 #include <cstdlib>
+
 
 #include "Location.h"
 
@@ -19,10 +22,50 @@ Location::Location(std::string locationName, int x, int y, Location* north, Loca
 {
 }
 
+std::string Location::getLocID()
+{
+	return m_LocationID;
+}
+
+int Location::getX()
+{
+	return m_XPos;
+}
+
+int Location::getY() 
+{
+	return m_YPos;
+}
+
+Location* Location::getNorth()
+{
+	return m_North;
+}
+
+Location* Location::getEast()
+{
+	return m_East;
+}
+
+Location* Location::getSouth()
+{
+	return m_South;
+}
+
+Location* Location::getWest()
+{
+	return m_West;
+}
 
 int Location::findDistance(Location* location)
 {
 	int distance;
-
-	return distance = abs(m_XPos - location->m_XPos) + abs(m_YPos - location->m_YPos);
+	if (location == nullptr)
+	{
+		assert(false && "Cannot findDistance to a null location");
+	}
+	else
+	{
+		return distance = abs(m_XPos - location->m_XPos) + abs(m_YPos - location->m_YPos);
+	}
 }

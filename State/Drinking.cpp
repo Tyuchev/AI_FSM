@@ -19,13 +19,14 @@ Drinking* Drinking::Instance()
 
 void Drinking::Enter(Lumberjack* lumberjack)
 {
-	if (true) //Lumberjack.location != pub
+	if (lumberjack) //Lumberjack.location != pub
 	{
 		//while ticks < 10
 		// Take 1 hour? Several ticks?? to move to pub
 		// ticks++
 	}
 
+	lumberjack->updateCash(-1);
 	// Lumberjack->updateLocation(pub)
 }
 

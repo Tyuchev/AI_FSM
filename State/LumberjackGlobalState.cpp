@@ -67,6 +67,10 @@ void LumberjackGlobalState::LumberjackStatCheck(Lumberjack* lumberjack)
 	{
 		lumberjack->m_IsUnhappy = true;
 	}
+	else if (lumberjack->tractorFull())
+	{
+		lumberjack->m_TractorFull = true;
+	}
 
 }
 

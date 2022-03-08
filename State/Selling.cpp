@@ -33,6 +33,11 @@ void Selling::Execute(Lumberjack* lumberjack)
 {
 	lumberjack->updateCash(1);
 	lumberjack->removeLogInventory();
+
+	if (lumberjack->getCurrentWood() < 1)
+	{
+		lumberjack->m_TractorFull = false;
+	}
 }
 
 void Selling::Exit(Lumberjack* lumberjack)

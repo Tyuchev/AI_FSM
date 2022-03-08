@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
+#include <cstdlib>
 
 
 
@@ -29,6 +32,12 @@ public:
 
 	int findDistance(Location* goalLocation);
 
-
+	std::string getLocID();
+	int getX();
+	int getY();
+	Location* getNorth();
+	Location* getEast();
+	Location* getSouth();
+	Location* getWest();
 
 };

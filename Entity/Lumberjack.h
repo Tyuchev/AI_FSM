@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #include "Entity.h"
+#include "../Simulation/Location.h""
 
 
 
@@ -14,7 +15,7 @@ class Lumberjack : public Entity
 {
 private:
 
-	//Location location
+	Location* m_Location;
 
 	int m_Happiness;
 	int m_Cash;
@@ -36,9 +37,9 @@ public:
 	bool m_IsHungry;
 	bool m_IsThirsty;
 	bool m_IsTired;
+	bool m_TractorFull;
 
 	void update();
-
 
 	void addLogToInventory();
 	void removeLogInventory();
@@ -48,6 +49,7 @@ public:
 	bool tired();
 	bool bored();
 
+	void updateLocation(Location* newLocation);
 	void updateHappiness(int happinessChange);
 	void updateCash(int cashChange);
 	void updateDeposits(int depositsChange);
@@ -57,6 +59,7 @@ public:
 
 	void depositEarnings();
 
+	Location* getLocation();
 	int getHappiness();
 	int getCash();
 	int getDeposits();
@@ -66,5 +69,6 @@ public:
 
 	int getCurrentWood();
 	int getMaxWood();
+
 
 };

@@ -54,6 +54,9 @@
     <ClCompile Include="State\Selling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State\Travelling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State\Selling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State\Travelling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

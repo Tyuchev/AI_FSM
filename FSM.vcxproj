@@ -152,6 +152,7 @@
     <ClCompile Include="State\LumberjackGlobalState.cpp" />
     <ClCompile Include="State\Resting.cpp" />
     <ClCompile Include="State\Selling.cpp" />
+    <ClCompile Include="State\Travelling.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity\Entity.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="State\Resting.h" />
     <ClInclude Include="State\Selling.h" />
     <ClInclude Include="State\State.h" />
+    <ClInclude Include="State\Travelling.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ReadMe\townLayout.png" />
