@@ -7,7 +7,6 @@
 #include <stdio.h>
 
 #include "Entity.h"
-#include "../StateManager/StateManager.h"
 
 
 
@@ -15,7 +14,6 @@ class Lumberjack : public Entity
 {
 private:
 
-	std::unique_ptr<StateManager<Lumberjack>> m_StateManager;
 	//Location location
 
 	int m_Happiness;
@@ -40,7 +38,7 @@ public:
 	bool m_IsTired;
 
 	void update();
-	void updateState(State<Lumberjack>* inputState);
+
 
 	void addLogToInventory();
 	void removeLogInventory();

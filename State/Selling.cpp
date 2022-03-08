@@ -22,7 +22,6 @@ void Selling::Enter(Lumberjack* lumberjack)
 	if (true) //Lumberjack.location != market
 	{
 		//while ticks < 10
-		std::cout << "Moving to the market" << std::endl;
 		// Take 1 hour? Several ticks?? to move to market
 		// ticks++
 	}
@@ -34,11 +33,9 @@ void Selling::Execute(Lumberjack* lumberjack)
 {
 	lumberjack->updateCash(1);
 	lumberjack->removeLogInventory();
-	std::cout << "Made a sale!" << std::endl;
 }
 
 void Selling::Exit(Lumberjack* lumberjack)
 {
-	std::cout << "Entity " << lumberjack->getID() << " made a profit!" << std::endl;
 
 }

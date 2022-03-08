@@ -9,7 +9,6 @@
 
 #include "Lumberjack.h"
 #include "Entity.h"
-#include "../StateManager/StateManager.h"
 
 
 
@@ -17,8 +16,6 @@ Lumberjack::Lumberjack()
 	:m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
 	m_IsUnhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false)
 {
-	m_StateManager = std::make_unique<StateManager<Lumberjack>>(this);
-
 	Entity::setID(nextID);
 	nextID++;
 }
@@ -26,7 +23,7 @@ Lumberjack::Lumberjack()
 
 void Lumberjack::update()
 {
-	m_StateManager->Update();
+	std::cout << "Is this necessary?" << std::endl;
 }
 
 int Lumberjack::getCash()
@@ -57,11 +54,6 @@ int Lumberjack::getTiredness()
 int Lumberjack::getHappiness()
 {
 	return m_Happiness;
-}
-
-void Lumberjack::updateState(State<Lumberjack>* inputState)
-{
-	m_StateManager->ChangeState(inputState);
 }
 
 void Lumberjack::addLogToInventory()
@@ -162,7 +154,7 @@ bool Lumberjack::bored()
 
 int Lumberjack::getCurrentWood()
 {
-	return m_MaxWood;
+	return m_CurrentWood;
 }
 
 int Lumberjack::getMaxWood()

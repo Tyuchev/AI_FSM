@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "../Entity/Lumberjack.h"
 #include "State.h"

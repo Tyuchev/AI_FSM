@@ -22,7 +22,6 @@ void Dancing::Enter(Lumberjack* lumberjack)
 	if (true) //Lumberjack.location != club
 	{
 		//while ticks < 10
-		std::cout << "Moving to the club" << std::endl;
 		// Take 1 hour? Several ticks?? to move to club
 		// ticks++
 	}
@@ -33,12 +32,15 @@ void Dancing::Enter(Lumberjack* lumberjack)
 void Dancing::Execute(Lumberjack* lumberjack)
 {
 	lumberjack->updateHappiness(30);
-	std::cout << "Party all night!" << std::endl;
+
+	if (lumberjack->getHappiness() >= 80)
+	{
+		lumberjack->m_IsUnhappy = false;
+	}
+
 }
 
 void Dancing::Exit(Lumberjack* lumberjack)
 {
-	std::cout << "Entity " << lumberjack->getID() << " all partied out!" << std::endl;
 
-	// Move back to market place
 }

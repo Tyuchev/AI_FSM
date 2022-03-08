@@ -22,7 +22,6 @@ void Resting::Enter(Lumberjack* lumberjack)
 	if (true) //Lumberjack.location != home
 	{
 		//while ticks < 10
-		std::cout << "Moving to my house" << std::endl;
 		// Take 1 hour? Several ticks?? to move to house
 		// ticks++
 	}
@@ -32,13 +31,15 @@ void Resting::Enter(Lumberjack* lumberjack)
 
 void Resting::Execute(Lumberjack* lumberjack)
 {
-	lumberjack->updateTiredness(7);
-	std::cout << "Having a rest!" << std::endl;
+	lumberjack->updateTiredness(15);
+
+	if (lumberjack->getTiredness() >= 80)
+	{
+		lumberjack->m_IsTired = false;
+	}
 }
 
 void Resting::Exit(Lumberjack* lumberjack)
 {
-	std::cout << "Entity " << lumberjack->getID() << " heading out to town" << std::endl;
 
-	// Move back to market place
 }

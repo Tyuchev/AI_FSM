@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Banking.h"
 #include "../Entity/Lumberjack.h"
@@ -24,7 +26,6 @@ void Banking::Enter(Lumberjack* lumberjack)
 	if (true) //Lumberjack.location != home
 	{
 		//while ticks < 10
-		std::cout << "Moving to the bank" << std::endl;
 		// Take 1 hour? Several ticks?? to move to bank
 		// ticks++
 	}
@@ -35,12 +36,9 @@ void Banking::Enter(Lumberjack* lumberjack)
 void Banking::Execute(Lumberjack* lumberjack)
 {
 	lumberjack->depositEarnings();
-	std::cout << "Adding to my savings!" << std::endl;
 }
 
 void Banking::Exit(Lumberjack* lumberjack)
 {
-	std::cout << "Entity " << lumberjack->getID() << " heading back to town" << std::endl;
 
-	// Move back to market place
 }
