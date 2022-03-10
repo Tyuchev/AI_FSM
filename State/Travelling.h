@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 
-#include "../Entity/Lumberjack.h"
 #include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 #include "State.h"
 
 

@@ -7,9 +7,9 @@
 #include <assert.h>
 
 #include "LumberjackGlobalState.h"
-#include "../Entity/Lumberjack.h"
 #include "State.h"
-
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
 LumberjackGlobalState* LumberjackGlobalState::Instance()

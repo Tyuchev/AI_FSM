@@ -18,7 +18,7 @@ int main()
 	std::cout << "Hello World" << std::endl;
 
 	// I think that my architecture could use some work - the Statemanager should probably be a parent class instead of template - 
-	// Then specific statemanager could be inherited from and more specific versions could be made for each type of entity - My states are reusable however
+	// Then statemanager could be inherited from and more specific versions could be made for each type of entity - My states are reusable however
 
 
 	// Create a moving state? take start and end locations?
@@ -79,6 +79,7 @@ int main()
 		elapsedSeconds = std::chrono::duration_cast<std::chrono::duration<float>>(elapsedNano);
 		turnTimeBuffer += elapsedSeconds.count();
 
+
 	}
 
 
@@ -89,7 +90,7 @@ int main()
 void printData(StateManager<Lumberjack> x, StateManager<Lumberjack> y)
 {
 	std::cout << "Bob's stats, " << "Happiness: " << x.getEntity()->getHappiness() << ", Cash: " << x.getEntity()->getCash() << ", Deposits: " << x.getEntity()->getDeposits() <<
-		", Thirst: " << x.getEntity()->getThirst() << ", Hunger: " << x.getEntity()->getHunger() << " , Fatigue: " << x.getEntity()->getTiredness() 
+		", Thirst: " << x.getEntity()->getThirst() << ", Hunger: " << x.getEntity()->getHunger() << " , Fatigue: " << x.getEntity()->getTiredness()
 		<< ", Wood: " << x.getEntity()->getCurrentWood() << std::endl;
 
 	std::cout << "Fred's stats, " << "Happiness: " << y.getEntity()->getHappiness() << ", Cash: " << y.getEntity()->getCash() << ", Deposits: " << y.getEntity()->getDeposits() <<

@@ -3,12 +3,32 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Drinking.h"
-#include "../Entity/Lumberjack.h"
 #include "State.h"
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
+
+Drinking::Drinking()
+	:m_Location(nullptr)
+{
+
+}
+
+
+Location* Drinking::getLocation()
+{
+	return m_Location;
+}
+
+void Drinking::setLocation(Location* location)
+{
+	m_Location = location;
+}
 
 Drinking* Drinking::Instance()
 {
@@ -19,7 +39,8 @@ Drinking* Drinking::Instance()
 
 void Drinking::Enter(Lumberjack* lumberjack)
 {
-	if (lumberjack) //Lumberjack.location != pub
+	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
+	if (lumberjack->getLocation()->getLocID() != "Pub")
 	{
 		//while ticks < 10
 		// Take 1 hour? Several ticks?? to move to pub
@@ -27,7 +48,6 @@ void Drinking::Enter(Lumberjack* lumberjack)
 	}
 
 	lumberjack->updateCash(-1);
-	// Lumberjack->updateLocation(pub)
 }
 
 void Drinking::Execute(Lumberjack* lumberjack)

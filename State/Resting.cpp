@@ -3,12 +3,31 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Resting.h"
-#include "../Entity/Lumberjack.h"
 #include "State.h"
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
+Resting::Resting()
+	:m_Location(nullptr)
+{
+
+}
+
+
+Location* Resting::getLocation()
+{
+	return m_Location;
+}
+
+void Resting::setLocation(Location* location)
+{
+	m_Location = location;
+}
 
 Resting* Resting::Instance()
 {
@@ -19,6 +38,7 @@ Resting* Resting::Instance()
 
 void Resting::Enter(Lumberjack* lumberjack)
 {
+	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
 	if (true) //Lumberjack.location != home
 	{
 		//while ticks < 10

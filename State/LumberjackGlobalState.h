@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "../Simulation/Location.h"
 #include "../Entity/Lumberjack.h"
 #include "State.h"
 

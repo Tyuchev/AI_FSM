@@ -5,10 +5,9 @@
 #include <string>
 
 #include "Travelling.h"
-#include "../Entity/Lumberjack.h"
-#include "../Simulation/Location.h"
 #include "State.h"
-
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
 Travelling* Travelling::Instance()

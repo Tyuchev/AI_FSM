@@ -3,12 +3,32 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Eating.h"
-#include "../Entity/Lumberjack.h"
 #include "State.h"
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
+
+Eating::Eating()
+	:m_Location(nullptr)
+{
+
+}
+
+
+Location* Eating::getLocation()
+{
+	return m_Location;
+}
+
+void Eating::setLocation(Location* location)
+{
+	m_Location = location;
+}
 
 Eating* Eating::Instance()
 {
@@ -19,6 +39,7 @@ Eating* Eating::Instance()
 
 void Eating::Enter(Lumberjack* lumberjack)
 {
+	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
 	if (true) //Lumberjack.location != cafe
 	{
 		//while ticks < 10

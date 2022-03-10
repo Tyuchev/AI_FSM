@@ -3,12 +3,32 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Dancing.h"
-#include "../Entity/Lumberjack.h"
 #include "State.h"
+#include "../Simulation/Location.h"
+#include "../Entity/Lumberjack.h"
 
 
+
+Dancing::Dancing()
+	:m_Location(nullptr)
+{
+
+}
+
+
+Location* Dancing::getLocation()
+{
+	return m_Location;
+}
+
+void Dancing::setLocation(Location* location)
+{
+	m_Location = location;
+}
 
 Dancing* Dancing::Instance()
 {
@@ -19,6 +39,7 @@ Dancing* Dancing::Instance()
 
 void Dancing::Enter(Lumberjack* lumberjack)
 {
+	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
 	if (true) //Lumberjack.location != club
 	{
 		//while ticks < 10
