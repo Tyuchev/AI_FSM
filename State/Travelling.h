@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "../Simulation/Location.h"
 #include "../Entity/Lumberjack.h"
@@ -22,7 +24,6 @@ public:
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);
-	virtual void Execute(Lumberjack* lumberjack, Location* goal);
 	virtual void Exit(Lumberjack* lumberjack);
 
 	static Travelling* Instance();

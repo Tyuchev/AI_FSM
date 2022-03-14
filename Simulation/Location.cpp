@@ -17,9 +17,18 @@ Location::Location(std::string locationName, int x, int y)
 {
 }
 
-Location::Location(std::string locationName, int x, int y, Location* north, Location* east, Location* south, Location* west)
+Location::Location(std::string locationName, int x, int y, std::shared_ptr<Location> north, std::shared_ptr<Location> east, std::shared_ptr<Location> south, std::shared_ptr<Location> west)
 	: m_LocationID(locationName), m_XPos(x), m_YPos(y), m_North(north), m_East(east), m_South(south), m_West(west)
 {
+}
+
+Location::Location(std::string locationName, int x, int y, Location* north, Location* east, Location* south, Location* west)
+	: m_LocationID(locationName), m_XPos(x), m_YPos(y)
+{
+	m_North = std::make_shared<Location>(north);
+	m_East = std::make_shared<Location>(east);
+	m_South = std::make_shared<Location>(south);
+	m_West = std::make_shared<Location>(west);
 }
 
 std::string Location::getLocID()
@@ -37,32 +46,75 @@ int Location::getY()
 	return m_YPos;
 }
 
-Location* Location::getNorth()
+std::shared_ptr<Location>Location::getNorth()
 {
 	return m_North;
 }
 
-Location* Location::getEast()
+std::shared_ptr<Location> Location::getEast()
 {
 	return m_East;
 }
 
-Location* Location::getSouth()
+std::shared_ptr<Location> Location::getSouth()
 {
 	return m_South;
 }
 
-Location* Location::getWest()
+std::shared_ptr<Location> Location::getWest()
 {
 	return m_West;
 }
 
-int Location::findDistance(Location* location)
+void Location::setNorth(std::shared_ptr<Location> newNorth)
+{
+	m_North = newNorth;
+}
+
+void Location::setEast(std::shared_ptr<Location> newEast)
+{
+	m_East = newEast;
+}
+
+void Location::setSouth(std::shared_ptr<Location> newSouth)
+{
+	m_South = newSouth;
+}
+
+void Location::setWest(std::shared_ptr<Location> newWest)
+{
+	m_West = newWest;
+}
+
+
+void Location::setNorth(Location* newNorth)
+{
+	m_North = std::make_shared<Location>(newNorth);
+}
+
+void Location::setEast(Location* newEast)
+{
+	m_East = std::make_shared<Location>(newEast);
+}
+
+void Location::setSouth(Location* newSouth)
+{
+	m_South = std::make_shared<Location>(newSouth);
+}
+
+void Location::setWest(Location* newWest)
+{
+	m_West = std::make_shared<Location>(newWest);
+}
+
+
+int Location::findDistance(std::shared_ptr<Location> location)
 {
 	int distance;
 	if (location == nullptr)
 	{
 		assert(false && "Cannot findDistance to a null location");
+		return 0;
 	}
 	else
 	{

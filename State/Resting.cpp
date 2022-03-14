@@ -19,12 +19,12 @@ Resting::Resting()
 }
 
 
-Location* Resting::getLocation()
+std::shared_ptr<Location> Resting::getLocation()
 {
 	return m_Location;
 }
 
-void Resting::setLocation(Location* location)
+void Resting::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

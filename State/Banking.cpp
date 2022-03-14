@@ -20,12 +20,12 @@ Banking::Banking()
 }
 
 
-Location* Banking::getLocation()
+std::shared_ptr<Location> Banking::getLocation()
 {
 	return m_Location;
 }
 
-void Banking::setLocation(Location* location)
+void Banking::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

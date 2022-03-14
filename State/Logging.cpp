@@ -20,12 +20,12 @@ Logging::Logging()
 }
 
 
-Location* Logging::getLocation()
+std::shared_ptr<Location> Logging::getLocation()
 {
 	return m_Location;
 }
 
-void Logging::setLocation(Location* location)
+void Logging::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

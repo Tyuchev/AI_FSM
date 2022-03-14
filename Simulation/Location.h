@@ -18,10 +18,10 @@ private:
 	int m_XPos;
 	int m_YPos;
 
-	Location* m_North;
-	Location* m_East;
-	Location* m_South;
-	Location* m_West;
+	std::shared_ptr<Location> m_North;
+	std::shared_ptr<Location> m_East;
+	std::shared_ptr<Location> m_South;
+	std::shared_ptr<Location> m_West;
 
 public:
 
@@ -29,15 +29,25 @@ public:
 
 	Location(std::string locationName, int x, int y);
 	Location(std::string locationName, int x, int y, Location* north, Location* east, Location* south, Location* west);
+	Location(std::string locationName, int x, int y, std::shared_ptr<Location> north, std::shared_ptr<Location> east, std::shared_ptr<Location> south, std::shared_ptr<Location> west);
 
-	int findDistance(Location* goalLocation);
+	int findDistance(std::shared_ptr<Location> goalLocation);
 
 	std::string getLocID();
 	int getX();
 	int getY();
-	Location* getNorth();
-	Location* getEast();
-	Location* getSouth();
-	Location* getWest();
+	std::shared_ptr<Location> getNorth();
+	std::shared_ptr<Location> getEast();
+	std::shared_ptr<Location> getSouth();
+	std::shared_ptr<Location> getWest();
+
+	void setNorth(Location* newNorth);
+	void setEast(Location* newEast);
+	void setSouth(Location* newSouth);
+	void setWest(Location* newWest);
+	void setNorth(std::shared_ptr<Location> newNorth);
+	void setEast(std::shared_ptr<Location> newEast);
+	void setSouth(std::shared_ptr<Location> newSouth);
+	void setWest(std::shared_ptr<Location> newWest);
 
 };

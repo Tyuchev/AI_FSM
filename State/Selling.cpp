@@ -19,12 +19,12 @@ Selling::Selling()
 }
 
 
-Location* Selling::getLocation()
+std::shared_ptr<Location> Selling::getLocation()
 {
 	return m_Location;
 }
 
-void Selling::setLocation(Location* location)
+void Selling::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

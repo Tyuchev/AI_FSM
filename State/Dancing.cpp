@@ -20,12 +20,12 @@ Dancing::Dancing()
 }
 
 
-Location* Dancing::getLocation()
+std::shared_ptr<Location> Dancing::getLocation()
 {
 	return m_Location;
 }
 
-void Dancing::setLocation(Location* location)
+void Dancing::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

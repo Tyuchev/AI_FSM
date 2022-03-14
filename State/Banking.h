@@ -15,7 +15,7 @@ class Banking : public State<Lumberjack>
 {
 
 private:
-	Location* m_Location;
+	std::shared_ptr<Location> m_Location;
 
 	Banking();
 	Banking(const Banking&);
@@ -24,8 +24,8 @@ public:
 
 	virtual ~Banking() {};
 
-	Location* getLocation();
-	void setLocation(Location* location);
+	std::shared_ptr<Location> getLocation();
+	void setLocation(std::shared_ptr<Location> location);
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

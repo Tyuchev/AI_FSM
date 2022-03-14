@@ -15,17 +15,17 @@ class Drinking : public State<Lumberjack>
 {
 
 private:
-	Location* m_Location;
+	std::shared_ptr<Location> m_Location;
 
 	Drinking();
-	Drinking(const Drinking&) {};
+	Drinking(const Drinking&):m_Location(nullptr) {};
 
 public:
 
 	virtual ~Drinking() {};
 
-	Location* getLocation();
-	void setLocation(Location* location);
+	std::shared_ptr<Location> getLocation();
+	void setLocation(std::shared_ptr<Location> location);
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

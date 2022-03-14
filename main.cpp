@@ -17,11 +17,8 @@ int main()
 
 	std::cout << "Hello World" << std::endl;
 
-	// I think that my architecture could use some work - the Statemanager should probably be a parent class instead of template - 
-	// Then statemanager could be inherited from and more specific versions could be made for each type of entity - My states are reusable however
-
-
-	// Create a moving state? take start and end locations?
+	// Rework state class to take extra parameter for initial setup of entity
+	//Allow for it to manage different types of entity
 
 	// create all entities prior to use
 
@@ -31,10 +28,14 @@ int main()
 
 
 
+	Simulation simulation;
+	simulation.initialiseMap();
 
+	std::shared_ptr<Location> bobStart = std::make_shared<Location>(simulation.findLocation("Cabin"));
+	std::shared_ptr<Location> fredStart = std::make_shared<Location>(simulation.findLocation("Forest"));
 
-	Lumberjack bob;
-	Lumberjack fred;
+	Lumberjack bob{bobStart};
+	Lumberjack fred{fredStart};
 
 	StateManager<Lumberjack> bobManager{ &bob };
 	StateManager<Lumberjack> fredManager;

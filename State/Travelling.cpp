@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <assert.h>
 
 #include "Travelling.h"
 #include "State.h"
@@ -22,17 +24,16 @@ void Travelling::Enter(Lumberjack* lumberjack)
 
 }
 
-void Travelling::Execute(Lumberjack* lumberjack, Location* goal)
+void Travelling::Execute(Lumberjack* lumberjack)
 {
-	Location* currentLocation = lumberjack->getLocation();
-	if (currentLocation == goal)
+	std::shared_ptr<Location> currentLocation = lumberjack->getLocation();
+	if (currentLocation == lumberjack->getTargetLoc())
 	{
-		std::cout << "You are already at your location!!!!" << std::endl;
-		return;
+		assert(false && "ERROR: Entity is already at target location!");
 	}
 
-	int xDiff = goal->getX() - currentLocation->getX();
-	int yDiff = goal->getY() - currentLocation->getY();
+	int xDiff = lumberjack->getTargetLoc()->getX() - currentLocation->getX();
+	int yDiff = lumberjack->getTargetLoc()->getY() - currentLocation->getY();
 
 	if (xDiff > 0 && currentLocation->getEast() != nullptr)
 	{
@@ -57,9 +58,4 @@ void Travelling::Execute(Lumberjack* lumberjack, Location* goal)
 void Travelling::Exit(Lumberjack* lumberjack)
 {
 
-}
-
-void Travelling::Execute(Lumberjack* lumberjack)
-{
-	std::cout << "Wrong Execute method" << std::endl;
 }

@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #include "Entity.h"
-#include "../Simulation/Location.h""
+#include "../Simulation/Location.h"
 
 
 
@@ -15,7 +15,8 @@ class Lumberjack : public Entity
 {
 private:
 
-	Location* m_Location;
+	std::shared_ptr<Location> m_Location;
+	std::shared_ptr<Location> m_TargetLoc;
 
 	int m_Happiness;
 	int m_Cash;
@@ -31,7 +32,8 @@ private:
 
 public:
 
-	Lumberjack();
+	Lumberjack() = delete;
+	Lumberjack(std::shared_ptr<Location> location);
 
 	bool m_IsUnhappy;
 	bool m_IsHungry;
@@ -49,7 +51,8 @@ public:
 	bool tired();
 	bool bored();
 
-	void updateLocation(Location* newLocation);
+	void updateTargetLoc(std::shared_ptr<Location> newLocation);
+	void updateLocation(std::shared_ptr<Location> newLocation);
 	void updateHappiness(int happinessChange);
 	void updateCash(int cashChange);
 	void updateDeposits(int depositsChange);
@@ -59,7 +62,8 @@ public:
 
 	void depositEarnings();
 
-	Location* getLocation();
+	std::shared_ptr<Location> getLocation();
+	std::shared_ptr<Location> getTargetLoc();
 	int getHappiness();
 	int getCash();
 	int getDeposits();

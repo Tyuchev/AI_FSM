@@ -15,7 +15,7 @@ class Resting : public State<Lumberjack>
 {
 
 private:
-	Location* m_Location;
+	std::shared_ptr<Location> m_Location;
 
 	Resting();
 	Resting(const Resting&);
@@ -24,8 +24,8 @@ public:
 
 	~Resting() {};
 
-	Location* getLocation();
-	void setLocation(Location* location);
+	std::shared_ptr<Location> getLocation();
+	void setLocation(std::shared_ptr<Location> location);
 
 	virtual void Enter(Lumberjack* lumberjack);
 	virtual void Execute(Lumberjack* lumberjack);

@@ -12,8 +12,9 @@
 
 
 
-Lumberjack::Lumberjack()
-	:m_Location(nullptr), m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
+Lumberjack::Lumberjack(std::shared_ptr<Location> location)
+	:m_Location(location), m_TargetLoc(nullptr),
+	m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
 	m_IsUnhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false), m_TractorFull(false)
 {
 	Entity::setID(nextID);
@@ -26,9 +27,14 @@ void Lumberjack::update()
 	std::cout << "Is this necessary?" << std::endl;
 }
 
-Location* Lumberjack::getLocation()
+std::shared_ptr<Location> Lumberjack::getLocation()
 {
 	return m_Location;
+}
+
+std::shared_ptr<Location> Lumberjack::getTargetLoc()
+{
+	return m_TargetLoc;
 }
 
 int Lumberjack::getCash()
@@ -70,9 +76,14 @@ void Lumberjack::removeLogInventory()
 	m_CurrentWood--;
 }
 
-void Lumberjack::updateLocation(Location* newLocation)
+void Lumberjack::updateLocation(std::shared_ptr<Location> newLocation)
 {
 	m_Location = newLocation;
+}
+
+void Lumberjack::updateTargetLoc(std::shared_ptr<Location> newLocation)
+{
+	m_TargetLoc = newLocation;
 }
 
 void Lumberjack::updateHappiness(int happinessChange)

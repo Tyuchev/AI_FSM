@@ -20,12 +20,12 @@ Eating::Eating()
 }
 
 
-Location* Eating::getLocation()
+std::shared_ptr<Location> Eating::getLocation()
 {
 	return m_Location;
 }
 
-void Eating::setLocation(Location* location)
+void Eating::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }

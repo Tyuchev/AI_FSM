@@ -20,12 +20,12 @@ Drinking::Drinking()
 }
 
 
-Location* Drinking::getLocation()
+std::shared_ptr<Location> Drinking::getLocation()
 {
 	return m_Location;
 }
 
-void Drinking::setLocation(Location* location)
+void Drinking::setLocation(std::shared_ptr<Location> location)
 {
 	m_Location = location;
 }
@@ -42,12 +42,12 @@ void Drinking::Enter(Lumberjack* lumberjack)
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
 	if (lumberjack->getLocation()->getLocID() != "Pub")
 	{
-		//while ticks < 10
-		// Take 1 hour? Several ticks?? to move to pub
-		// ticks++
+		/// Needed ?????
 	}
-
-	lumberjack->updateCash(-1);
+	else
+	{
+		lumberjack->updateCash(-1);
+	}	
 }
 
 void Drinking::Execute(Lumberjack* lumberjack)

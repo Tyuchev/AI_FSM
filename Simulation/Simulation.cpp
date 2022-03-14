@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <memory>
 
 #include "Simulation.h"
 #include "Location.h"
@@ -25,10 +27,13 @@ Simulation::~Simulation()
 
 void Simulation::initialiseMap()
 {
-	//create and link locations
+	Location Forest{ "Forest", 0, 2 };
+	addLocation(&Forest);
+	Location Club{ "Club", 0, 1 };
+	addLocation(&Club);
 }
 
-Location* Simulation::getLocation(std::string locationID)
+std::shared_ptr<Location> Simulation::findLocation(std::string locationID)
 {
 	for (int i = 0; i < m_LocationHolder.size(); i++)
 	{
@@ -46,6 +51,14 @@ Location* Simulation::getLocation(std::string locationID)
 }
 
 void Simulation::addLocation(Location* newLocation)
+{
+	if (newLocation != nullptr)
+	{
+		m_LocationHolder.push_back(std::make_shared<Location>(newLocation));
+	}
+}
+
+void Simulation::addLocation(std::shared_ptr<Location> newLocation)
 {
 	if (newLocation != nullptr)
 	{
