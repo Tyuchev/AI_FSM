@@ -22,7 +22,7 @@ Location::Location(std::string locationName, int x, int y, std::shared_ptr<Locat
 {
 }
 
-Location::Location(std::string locationName, int x, int y, Location* north, Location* east, Location* south, Location* west)
+Location::Location(std::string locationName, int x, int y, Location& north, Location& east, Location& south, Location& west)
 	: m_LocationID(locationName), m_XPos(x), m_YPos(y)
 {
 	m_North = std::make_shared<Location>(north);
@@ -87,22 +87,22 @@ void Location::setWest(std::shared_ptr<Location> newWest)
 }
 
 
-void Location::setNorth(Location* newNorth)
+void Location::setNorth(Location& newNorth)
 {
 	m_North = std::make_shared<Location>(newNorth);
 }
 
-void Location::setEast(Location* newEast)
+void Location::setEast(Location& newEast)
 {
 	m_East = std::make_shared<Location>(newEast);
 }
 
-void Location::setSouth(Location* newSouth)
+void Location::setSouth(Location& newSouth)
 {
 	m_South = std::make_shared<Location>(newSouth);
 }
 
-void Location::setWest(Location* newWest)
+void Location::setWest(Location& newWest)
 {
 	m_West = std::make_shared<Location>(newWest);
 }

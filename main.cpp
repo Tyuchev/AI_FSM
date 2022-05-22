@@ -18,7 +18,7 @@ int main()
 	std::cout << "Hello World" << std::endl;
 
 	// Rework state class to take extra parameter for initial setup of entity
-	//Allow for it to manage different types of entity
+	// Allow for it to manage different types of entity
 
 	// create all entities prior to use
 
@@ -31,11 +31,11 @@ int main()
 	Simulation simulation;
 	simulation.initialiseMap();
 
-	std::shared_ptr<Location> bobStart = std::make_shared<Location>(simulation.findLocation("Cabin"));
-	std::shared_ptr<Location> fredStart = std::make_shared<Location>(simulation.findLocation("Forest"));
+	std::shared_ptr<Location> bobStartLoc = (simulation.findLocation("Cabin"));
+	std::shared_ptr<Location> fredStartLoc = (simulation.findLocation("Forest"));
 
-	Lumberjack bob{bobStart};
-	Lumberjack fred{fredStart};
+	Lumberjack bob{bobStartLoc};
+	Lumberjack fred{fredStartLoc};
 
 	StateManager<Lumberjack> bobManager{ &bob };
 	StateManager<Lumberjack> fredManager;

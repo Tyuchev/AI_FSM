@@ -25,10 +25,12 @@ private:
 
 public:
 
+	
+
 	Location() = delete;
 
 	Location(std::string locationName, int x, int y);
-	Location(std::string locationName, int x, int y, Location* north, Location* east, Location* south, Location* west);
+	Location(std::string locationName, int x, int y, Location& north, Location& east, Location& south, Location& west);
 	Location(std::string locationName, int x, int y, std::shared_ptr<Location> north, std::shared_ptr<Location> east, std::shared_ptr<Location> south, std::shared_ptr<Location> west);
 
 	int findDistance(std::shared_ptr<Location> goalLocation);
@@ -41,10 +43,10 @@ public:
 	std::shared_ptr<Location> getSouth();
 	std::shared_ptr<Location> getWest();
 
-	void setNorth(Location* newNorth);
-	void setEast(Location* newEast);
-	void setSouth(Location* newSouth);
-	void setWest(Location* newWest);
+	void setNorth(Location& newNorth);
+	void setEast(Location& newEast);
+	void setSouth(Location& newSouth);
+	void setWest(Location& newWest);
 	void setNorth(std::shared_ptr<Location> newNorth);
 	void setEast(std::shared_ptr<Location> newEast);
 	void setSouth(std::shared_ptr<Location> newSouth);
