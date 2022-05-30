@@ -40,20 +40,13 @@ Eating* Eating::Instance()
 void Eating::Enter(Lumberjack* lumberjack)
 {
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
-	if (true) //Lumberjack.location != cafe
-	{
-		//while ticks < 10
-		// Take 1 hour? Several ticks?? to move to house
-		// ticks++
-	}
 
 	lumberjack->updateCash(-1);
-	// Lumberjack->updateLocation(cafe)
 }
 
 void Eating::Execute(Lumberjack* lumberjack)
 {
-	lumberjack->updateHunger(20);
+	lumberjack->updateHunger(25);
 
 	if (lumberjack->getHunger() >= 80)
 	{

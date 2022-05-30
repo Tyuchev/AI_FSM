@@ -40,20 +40,13 @@ Dancing* Dancing::Instance()
 void Dancing::Enter(Lumberjack* lumberjack)
 {
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
-	if (true) //Lumberjack.location != club
-	{
-		//while ticks < 10
-		// Take 1 hour? Several ticks?? to move to club
-		// ticks++
-	}
 
 	lumberjack->updateCash(-1);
-	// Lumberjack->updateLocation(club)
 }
 
 void Dancing::Execute(Lumberjack* lumberjack)
 {
-	lumberjack->updateHappiness(30);
+	lumberjack->updateHappiness(35);
 
 	if (lumberjack->getHappiness() >= 80)
 	{

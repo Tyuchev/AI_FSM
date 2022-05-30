@@ -33,6 +33,7 @@ public:
 	Location(std::string locationName, int x, int y, Location& north, Location& east, Location& south, Location& west);
 	Location(std::string locationName, int x, int y, std::shared_ptr<Location> north, std::shared_ptr<Location> east, std::shared_ptr<Location> south, std::shared_ptr<Location> west);
 
+	bool compareLoc(std::shared_ptr<Location> rhsLocation);
 	int findDistance(std::shared_ptr<Location> goalLocation);
 
 	std::string getLocID();

@@ -12,4 +12,3 @@
 
 
 int main();
-void printData(StateManager<Lumberjack> x, StateManager<Lumberjack> y);

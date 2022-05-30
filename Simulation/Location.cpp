@@ -31,6 +31,12 @@ Location::Location(std::string locationName, int x, int y, Location& north, Loca
 	m_West = std::make_shared<Location>(west);
 }
 
+
+bool Location::compareLoc(std::shared_ptr<Location> rhsLocation)
+{
+	return this->getLocID() == rhsLocation->getLocID();
+}
+
 std::string Location::getLocID()
 {
 	return m_LocationID;

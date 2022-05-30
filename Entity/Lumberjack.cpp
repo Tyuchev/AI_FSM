@@ -12,8 +12,8 @@
 
 
 
-Lumberjack::Lumberjack(std::shared_ptr<Location> location)
-	:m_Location(location), m_TargetLoc(nullptr),
+Lumberjack::Lumberjack(std::string entityName, std::shared_ptr<Location> location)
+	:m_Name(entityName), m_Location(location), m_TargetLoc(nullptr),
 	m_Happiness(100), m_Cash(2), m_Deposits(0), m_Hunger(100), m_Thirst(100), m_Tired(100), m_CurrentWood(0), m_MaxWood(10),
 	m_IsUnhappy(false), m_IsThirsty(false), m_IsHungry(false), m_IsTired(false), m_TractorFull(false)
 {
@@ -78,12 +78,12 @@ void Lumberjack::removeLogInventory()
 
 void Lumberjack::updateLocation(std::shared_ptr<Location> newLocation)
 {
-	m_Location = newLocation;
+	m_Location = std::make_shared<Location>(*newLocation);
 }
 
 void Lumberjack::updateTargetLoc(std::shared_ptr<Location> newLocation)
 {
-	m_TargetLoc = newLocation;
+	m_TargetLoc = std::make_shared<Location>(*newLocation);
 }
 
 void Lumberjack::updateHappiness(int happinessChange)
@@ -116,10 +116,10 @@ void Lumberjack::updateTiredness(int tirednessChange)
 
 void Lumberjack::depositEarnings()
 {
-	assert(m_Cash >= 3);
+	assert(m_Cash >= 5);
 
-	m_Deposits += (m_Cash - 3);
-	m_Cash = 3;
+	m_Deposits += (m_Cash - 5);
+	m_Cash = 5;
 
 }
 
@@ -135,7 +135,7 @@ bool Lumberjack::tractorFull()
 
 bool Lumberjack::thirsty()
 {
-	if (m_Thirst <= 40)
+	if (m_Thirst <= 45)
 	{
 		return true;
 	}
@@ -145,7 +145,7 @@ bool Lumberjack::thirsty()
 
 bool Lumberjack::hungry()
 {
-	if (m_Hunger <= 30)
+	if (m_Hunger <= 40)
 	{
 		return true;
 	}
@@ -155,7 +155,7 @@ bool Lumberjack::hungry()
 
 bool Lumberjack::tired()
 {
-	if (m_Tired <= 20)
+	if (m_Tired <= 30)
 	{
 		return true;
 	}

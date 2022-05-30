@@ -40,19 +40,13 @@ Drinking* Drinking::Instance()
 void Drinking::Enter(Lumberjack* lumberjack)
 {
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
-	if (lumberjack->getLocation()->getLocID() != "Pub")
-	{
-		/// Needed ?????
-	}
-	else
-	{
-		lumberjack->updateCash(-1);
-	}	
+
+	lumberjack->updateCash(-1);
 }
 
 void Drinking::Execute(Lumberjack* lumberjack)
 {
-	lumberjack->updateThirst(30);
+	lumberjack->updateThirst(35);
 
 	if (lumberjack->getThirst() >= 80)
 	{

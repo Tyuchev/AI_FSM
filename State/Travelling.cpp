@@ -27,7 +27,7 @@ void Travelling::Enter(Lumberjack* lumberjack)
 void Travelling::Execute(Lumberjack* lumberjack)
 {
 	std::shared_ptr<Location> currentLocation = lumberjack->getLocation();
-	if (currentLocation == lumberjack->getTargetLoc())
+	if (currentLocation->getLocID() == lumberjack->getTargetLoc()->getLocID())
 	{
 		assert(false && "ERROR: Entity is already at target location!");
 	}

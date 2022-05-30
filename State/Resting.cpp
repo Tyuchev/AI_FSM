@@ -39,19 +39,11 @@ Resting* Resting::Instance()
 void Resting::Enter(Lumberjack* lumberjack)
 {
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
-	if (true) //Lumberjack.location != home
-	{
-		//while ticks < 10
-		// Take 1 hour? Several ticks?? to move to house
-		// ticks++
-	}
-
-	// Lumberjack->updateLocation(house)
 }
 
 void Resting::Execute(Lumberjack* lumberjack)
 {
-	lumberjack->updateTiredness(15);
+	lumberjack->updateTiredness(18);
 
 	if (lumberjack->getTiredness() >= 80)
 	{

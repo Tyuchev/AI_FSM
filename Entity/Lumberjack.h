@@ -33,7 +33,9 @@ private:
 public:
 
 	Lumberjack() = delete;
-	Lumberjack(std::shared_ptr<Location> location);
+	Lumberjack(std::string entityName, std::shared_ptr<Location> location);
+
+	std::string m_Name;
 
 	bool m_IsUnhappy;
 	bool m_IsHungry;

@@ -100,19 +100,20 @@ public:
 			m_GlobalState->Execute(m_Entity);
 		}
 
+		std::cout << m_Entity->m_Name << ": ";
 
 		if (m_Entity->m_IsThirsty && m_Entity->getCash() > 0)
 		{
-			if (!isInState(Drinking::Instance()) && m_Entity->getLocation() != Drinking::Instance()->getLocation())
+			if (!isInState(Drinking::Instance()) && !m_Entity->getLocation()->compareLoc((Drinking::Instance()->getLocation())))
 			{
 				m_Entity->updateTargetLoc(Drinking::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "I'm thirsty, off to the pub!" << std::endl;
+				std::cout << "I'm thirsty, walking to the pub!" << std::endl;
 			}
 			else if (!isInState(Drinking::Instance()))
 			{
 				changeState(Drinking::Instance());
-				std::cout << "I'm thirsty, off to the pub!" << std::endl;
+				std::cout << "I'm thirsty, good thing im already at the pub!" << std::endl;
 			}
 			else
 			{
@@ -121,16 +122,16 @@ public:
 		}
 		else if (m_Entity->m_IsHungry && m_Entity->getCash() > 0)
 		{
-			if (!isInState(Eating::Instance()) && m_Entity->getLocation() != Eating::Instance()->getLocation())
+			if (!isInState(Eating::Instance()) && !m_Entity->getLocation()->compareLoc(Eating::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Eating::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "I'm hungry, I'm going to the restaurant" << std::endl;
+				std::cout << "I'm hungry, walking to the cafe" << std::endl;
 			}
 			else if (!isInState(Eating::Instance()))
 			{
 				changeState(Eating::Instance());
-				std::cout << "I'm hungry, I'm going to the restaurant" << std::endl;
+				std::cout << "I'm hungry, im at the cafe" << std::endl;
 			}
 			else
 			{
@@ -139,16 +140,16 @@ public:
 		}
 		else if (m_Entity->m_IsTired)
 		{
-			if (!isInState(Resting::Instance()) && m_Entity->getLocation() != Resting::Instance()->getLocation())
+			if (!isInState(Resting::Instance()) && !m_Entity->getLocation()->compareLoc(Resting::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Resting::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "I'm sleepy, I'm gonna get some rest" << std::endl;
+				std::cout << "I'm sleepy, walking home" << std::endl;
 			}
 			else if (!isInState(Resting::Instance()))
 			{
 				changeState(Resting::Instance());
-				std::cout << "I'm sleepy, I'm gonna get some rest" << std::endl;
+				std::cout << "I'm sleepy, getting in bed" << std::endl;
 			}
 			else
 			{
@@ -157,16 +158,16 @@ public:
 		}
 		else if (m_Entity->m_IsUnhappy && m_Entity->getCash() > 0)
 		{
-			if (!isInState(Dancing::Instance()) && m_Entity->getLocation() != Dancing::Instance()->getLocation())
+			if (!isInState(Dancing::Instance()) && !m_Entity->getLocation()->compareLoc(Dancing::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Dancing::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "This is boring, time to bust a move!" << std::endl;
+				std::cout << "This is boring, walking to the Club!" << std::endl;
 			}
 			else if (!isInState(Dancing::Instance()))
 			{
 				changeState(Dancing::Instance());
-				std::cout << "This is boring, time to bust a move!" << std::endl;
+				std::cout << "Time to bust a move!" << std::endl;
 			}
 			else
 			{
@@ -175,16 +176,16 @@ public:
 		}
 		else if (m_Entity->getCash() < 3 && m_Entity->getCurrentWood() > 0)
 		{
-			if (!isInState(Selling::Instance()) && m_Entity->getLocation() != Selling::Instance()->getLocation())
+			if (!isInState(Selling::Instance()) && !m_Entity->getLocation()->compareLoc(Selling::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Selling::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "Wallet's feeling a bit light, I'd better sell some of these logs" << std::endl;
+				std::cout << "Wallet's feeling a bit light, heading to market to sell my goods" << std::endl;
 			}
 			else if (!isInState(Selling::Instance()))
 			{
 				changeState(Selling::Instance());
-				std::cout << "Wallet's feeling a bit light, I'd better sell some of these logs" << std::endl;
+				std::cout << "In the market selling my items" << std::endl;
 			}
 			else
 			{
@@ -193,34 +194,34 @@ public:
 		}
 		else if (m_Entity->getCash() < 3)
 		{
-			if (!isInState(Logging::Instance()) && m_Entity->getLocation() != Logging::Instance()->getLocation())
+			if (!isInState(Logging::Instance()) && !m_Entity->getLocation()->compareLoc(Logging::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Logging::Instance()->getLocation());
-				changeState(Logging::Instance());
-				std::cout << "Wallet's feeling a bit light, I'd better go to work!" << std::endl;
+				changeState(Travelling::Instance());
+				std::cout << "I need some cash, walking to work!" << std::endl;
 			}
 			else if (!isInState(Logging::Instance()))
 			{
 				changeState(Logging::Instance());
-				std::cout << "Wallet's feeling a bit light, I'd better go to work!" << std::endl;
+				std::cout << "At work, starting now!" << std::endl;
 			}
 			else
 			{
-				std::cout << "Continuing to work in the forest" << std::endl;
+				std::cout << "Continuing to work" << std::endl;
 			}
 		}
 		else if (m_Entity->m_TractorFull)
 		{
-			if (!isInState(Selling::Instance()) && m_Entity->getLocation() != Selling::Instance()->getLocation())
+			if (!isInState(Selling::Instance()) && !m_Entity->getLocation()->compareLoc(Selling::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Selling::Instance()->getLocation());
 				changeState(Travelling::Instance());
-				std::cout << "Tractor's full, better head back to market" << std::endl;
+				std::cout << "Tractor's full, better walk back to market" << std::endl;
 			}
 			else if (!isInState(Selling::Instance()))
 			{
 				changeState(Selling::Instance());
-				std::cout << "Tractor's full, better head back to market" << std::endl;
+				std::cout << "Arrived at the market, selling wares" << std::endl;
 			}
 			else
 			{
@@ -229,16 +230,16 @@ public:
 		}
 		else if (m_Entity->getCash() >= 10)
 		{
-			if (!isInState(Banking::Instance()) && m_Entity->getLocation() != Banking::Instance()->getLocation())
+			if (!isInState(Banking::Instance()) && !m_Entity->getLocation()->compareLoc(Banking::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Banking::Instance()->getLocation());
-				changeState(Banking::Instance());
-				std::cout << "It's been a good harvest, lets add to my savings" << std::endl;
+				changeState(Travelling::Instance());
+				std::cout << "Lets add to my savings, walking to the bank" << std::endl;
 			}
 			if (!isInState(Banking::Instance()))
 			{
 				changeState(Banking::Instance());
-				std::cout << "It's been a good harvest, lets add to my savings" << std::endl;
+				std::cout << "At the bank, lets add to my savings" << std::endl;
 			}
 			else
 			{
@@ -247,23 +248,23 @@ public:
 		}
 		else if (m_Entity->getCurrentWood() < m_Entity->getMaxWood())
 		{
-			if (!isInState(Logging::Instance()) && m_Entity->getLocation() != Logging::Instance()->getLocation())
+			if (!isInState(Logging::Instance()) && !m_Entity->getLocation()->compareLoc(Logging::Instance()->getLocation()))
 			{
 				m_Entity->updateTargetLoc(Logging::Instance()->getLocation());
-				changeState(Logging::Instance());
-				std::cout << "Got nothin' else todo, might as well get back to work" << std::endl;
+				changeState(Travelling::Instance());
+				std::cout << "Got nothin' else todo, walking back to work" << std::endl;
 			}
 			else if (!isInState(Logging::Instance()))
 			{
 				changeState(Logging::Instance());
-				std::cout << "Got nothin' else todo, might as well get back to work" << std::endl;
+				std::cout << "At work, starting now!" << std::endl;
 			}
 			else
 			{
-				std::cout << "Continuing to work in the forest" << std::endl;
+				std::cout << "Continuing to work" << std::endl;
 			}
 		}
-
+		std::cout << std::endl;
 
 		if (m_CurrentState != nullptr)
 		{

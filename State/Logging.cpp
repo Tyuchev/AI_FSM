@@ -40,14 +40,6 @@ Logging* Logging::Instance()
 void Logging::Enter(Lumberjack* lumberjack)
 {
 	assert(m_Location != nullptr && "Cannot enter state which does not have a location set");
-	if (true) //Lumberjack.location != forrest
-	{
-		//while ticks < 10
-		// Take 1 hour? Several ticks?? to move to forrest
-		// ticks++
-	}
-
-	// Lumberjack->updateLocation(forrest)
 }
 
 void Logging::Execute(Lumberjack* lumberjack)
